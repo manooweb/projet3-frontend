@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, inject } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Rental } from 'src/app/features/rentals/interfaces/rental.interface';
@@ -8,25 +8,33 @@ import { MessageRequest } from '../../interfaces/api/messageRequest.interface';
 import { MessageResponse } from '../../interfaces/api/messageResponse.interface';
 import { MessagesService } from '../../services/messages.service';
 import { RentalsService } from '../../services/rentals.service';
+import { MatCard, MatCardTitle, MatCardSubtitle, MatCardContent } from '@angular/material/card';
+import { FlexModule } from 'ng-flex-layout/flex';
+import { MatIconButton, MatButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { OwnerInfoComponent } from '../../../../shared/components/owner-info/owner-info.component';
+import { MatInput } from '@angular/material/input';
+import { TitleCasePipe, CurrencyPipe, DatePipe } from '@angular/common';
 
 @Component({
     selector: 'app-detail',
     templateUrl: './detail.component.html',
     styleUrls: ['./detail.component.scss'],
-    standalone: false
+    imports: [MatCard, MatCardTitle, FlexModule, MatIconButton, MatIcon, MatCardSubtitle, OwnerInfoComponent, MatCardContent, FormsModule, ReactiveFormsModule, MatInput, MatButton, TitleCasePipe, CurrencyPipe, DatePipe]
 })
 export class DetailComponent implements OnInit {
+  private route = inject(ActivatedRoute);
+  private fb = inject(FormBuilder);
+  private messagesService = inject(MessagesService);
+  private rentalsService = inject(RentalsService);
+  private sessionService = inject(SessionService);
+  private matSnackBar = inject(MatSnackBar);
+
 
   public messageForm!: FormGroup;
   public rental: Rental | undefined;
 
-  constructor(
-    private route: ActivatedRoute,
-    private fb: FormBuilder,
-    private messagesService: MessagesService,
-    private rentalsService: RentalsService,
-    private sessionService: SessionService,
-    private matSnackBar: MatSnackBar) {
+  constructor() {
     this.initMessageForm();
   }
 

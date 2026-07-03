@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from './features/auth/services/auth.service';
@@ -12,11 +12,10 @@ import { SessionService } from './services/session.service';
     standalone: false
 })
 export class AppComponent implements OnInit {
-  constructor(
-    private authService: AuthService,
-    private router: Router,
-    private sessionService: SessionService) {
-  }
+  private authService = inject(AuthService);
+  private router = inject(Router);
+  private sessionService = inject(SessionService);
+
 
   public ngOnInit(): void {
     this.autoLog();

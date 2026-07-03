@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Rental } from 'src/app/features/rentals/interfaces/rental.interface';
 import { RentalResponse } from '../interfaces/api/rentalResponse.interface';
@@ -10,10 +10,10 @@ import { RentalsResponse } from '../interfaces/api/rentalsResponse.interface';
   providedIn: 'root'
 })
 export class RentalsService {
+  private httpClient = inject(HttpClient);
+
 
   private pathService = 'api/rentals';
-
-  constructor(private httpClient: HttpClient) { }
 
   public all(): Observable<RentalsResponse> {
     return this.httpClient.get<RentalsResponse>(this.pathService);

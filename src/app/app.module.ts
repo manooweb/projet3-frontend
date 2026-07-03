@@ -21,16 +21,13 @@ const materialModule = [
   MatToolbarModule,
 ]
 
-@NgModule({ declarations: [
-        AppComponent,
-        NotFoundComponent,
-        MeComponent
-    ],
+@NgModule({ declarations: [AppComponent],
     bootstrap: [AppComponent], imports: [BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         FlexLayoutModule,
-        ...materialModule], providers: [
+        ...materialModule, NotFoundComponent,
+        MeComponent], providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         provideHttpClient(withInterceptorsFromDi()),
     ] })

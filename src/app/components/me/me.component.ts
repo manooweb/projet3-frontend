@@ -1,18 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { AuthService } from 'src/app/features/auth/services/auth.service';
 import { User } from 'src/app/interfaces/user.interface';
+import { MatCard, MatCardTitle, MatCardContent } from '@angular/material/card';
+import { FlexModule } from 'ng-flex-layout/flex';
+import { MatIconButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { DatePipe } from '@angular/common';
 
 @Component({
     selector: 'app-me',
     templateUrl: './me.component.html',
     styleUrls: ['./me.component.scss'],
-    standalone: false
+    imports: [MatCard, MatCardTitle, FlexModule, MatIconButton, MatIcon, MatCardContent, DatePipe]
 })
 export class MeComponent implements OnInit {
+  private authService = inject(AuthService);
+
 
   public user: User | undefined;
-
-  constructor(private authService: AuthService) { }
 
   public ngOnInit(): void {
     this.authService.me().subscribe(

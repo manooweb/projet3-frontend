@@ -1,15 +1,12 @@
-import {Injectable} from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { Router } from "@angular/router"; 
 import { SessionService } from "../services/session.service";
 
 @Injectable({providedIn: 'root'})
 export class UnauthGuard  {
+  private router = inject(Router);
+  private sessionService = inject(SessionService);
 
-  constructor( 
-    private router: Router,
-    private sessionService: SessionService,
-  ) {
-  }
 
   public canActivate(): boolean {
     if (this.sessionService.isLogged) {

@@ -1,34 +1,38 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, inject } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { SessionService } from 'src/app/services/session.service';
 import { RentalResponse } from '../../interfaces/api/rentalResponse.interface';
 import { Rental } from '../../interfaces/rental.interface';
 import { RentalsService } from '../../services/rentals.service';
+import { MatCard, MatCardTitle, MatCardContent } from '@angular/material/card';
+import { FlexModule } from 'ng-flex-layout/flex';
+import { MatIconButton, MatButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { MatFormField, MatLabel, MatSuffix } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { MaterialFileInputModule } from 'ngx-custom-material-file-input';
 
 @Component({
     selector: 'app-form',
     templateUrl: './form.component.html',
     styleUrls: ['./form.component.scss'],
-    standalone: false
+    imports: [MatCard, MatCardTitle, FlexModule, MatIconButton, RouterLink, MatIcon, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, MatInput, MatSuffix, MaterialFileInputModule, MatButton]
 })
 export class FormComponent implements OnInit {
+  private route = inject(ActivatedRoute);
+  private fb = inject(FormBuilder);
+  private matSnackBar = inject(MatSnackBar);
+  private rentalsService = inject(RentalsService);
+  private sessionService = inject(SessionService);
+  private router = inject(Router);
+
 
   public onUpdate: boolean = false;
   public rentalForm: FormGroup | undefined;
 
   private id: string | undefined;
-
-  constructor(
-    private route: ActivatedRoute,
-    private fb: FormBuilder,
-    private matSnackBar: MatSnackBar,
-    private rentalsService: RentalsService,
-    private sessionService: SessionService,
-    private router: Router
-  ) {
-  }
 
   public ngOnInit(): void {
     const url = this.router.url;

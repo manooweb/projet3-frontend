@@ -28,26 +28,24 @@ const materialModules = [
 ];
 
 @NgModule({
-  declarations: [
-    ListComponent,
-    FormComponent,
-    DetailComponent
-  ],
-  imports: [
-    CommonModule,
-    FlexLayoutModule,
-    FormsModule,
-    MaterialFileInputModule,
-    ReactiveFormsModule,
-    RentalRoutingModule,
-    SharedModule,
-    ...materialModules
-  ],
-  providers: [
-    {
-      provide: LOCALE_ID,
-      useValue: 'fr-FR'
-    },
-  ]
+    imports: [
+        CommonModule,
+        FlexLayoutModule,
+        FormsModule,
+        MaterialFileInputModule,
+        ReactiveFormsModule,
+        RentalRoutingModule,
+        SharedModule,
+        ...materialModules,
+        ListComponent,
+        FormComponent,
+        DetailComponent
+    ],
+    providers: [
+        {
+            provide: LOCALE_ID,
+            useValue: 'fr-FR'
+        },
+    ]
 })
 export class RentalsModule { }
