@@ -12,7 +12,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SharedModule } from 'src/app/shared/shared.module';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MaterialFileInputModule } from 'ngx-custom-material-file-input';
@@ -29,18 +29,17 @@ const materialModules = [
 
 @NgModule({
     imports: [
-        CommonModule,
-        FlexLayoutModule,
-        FormsModule,
-        MaterialFileInputModule,
-        ReactiveFormsModule,
-        RentalRoutingModule,
-        SharedModule,
-        ...materialModules,
-        ListComponent,
-        FormComponent,
-        DetailComponent
-    ],
+    CommonModule,
+    FlexLayoutModule,
+    FormsModule,
+    MaterialFileInputModule,
+    ReactiveFormsModule,
+    RentalRoutingModule,
+    ...materialModules,
+    ListComponent,
+    FormComponent,
+    DetailComponent
+],
     providers: [
         {
             provide: LOCALE_ID,
