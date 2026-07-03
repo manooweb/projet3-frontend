@@ -1,10 +1,10 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/interfaces/user.interface';
 import { SessionService } from 'src/app/services/session.service';
 import { AuthSuccess } from '../../interfaces/authSuccess.interface';
-import { LoginRequest } from '../../interfaces/loginRequest.interface'; 
+import { LoginRequest } from '../../interfaces/loginRequest.interface';
 import { AuthService } from '../../services/auth.service';
 import { FlexModule } from 'ng-flex-layout/flex';
 import { MatCard, MatCardHeader, MatCardTitle, MatCardContent } from '@angular/material/card';
@@ -17,7 +17,22 @@ import { MatIcon } from '@angular/material/icon';
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
-    imports: [FlexModule, MatCard, MatCardHeader, MatCardTitle, FormsModule, ReactiveFormsModule, MatCardContent, MatFormField, MatInput, MatIconButton, MatSuffix, MatIcon, MatButton]
+    imports: [
+      FlexModule,
+      MatCard,
+      MatCardHeader,
+      MatCardTitle,
+      FormsModule,
+      ReactiveFormsModule,
+      MatCardContent,
+      MatFormField,
+      MatInput,
+      MatIconButton,
+      MatSuffix,
+      MatIcon,
+      MatButton
+    ],
+    standalone: true
 })
 export class LoginComponent  {
   private authService = inject(AuthService);

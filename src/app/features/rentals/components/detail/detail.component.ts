@@ -17,10 +17,27 @@ import { MatInput } from '@angular/material/input';
 import { TitleCasePipe, CurrencyPipe, DatePipe } from '@angular/common';
 
 @Component({
-    selector: 'app-detail',
-    templateUrl: './detail.component.html',
-    styleUrls: ['./detail.component.scss'],
-    imports: [MatCard, MatCardTitle, FlexModule, MatIconButton, MatIcon, MatCardSubtitle, OwnerInfoComponent, MatCardContent, FormsModule, ReactiveFormsModule, MatInput, MatButton, TitleCasePipe, CurrencyPipe, DatePipe]
+  selector: 'app-detail',
+  templateUrl: './detail.component.html',
+  styleUrls: ['./detail.component.scss'],
+  imports: [
+    MatCard,
+    MatCardTitle,
+    FlexModule,
+    MatIconButton,
+    MatIcon,
+    MatCardSubtitle,
+    OwnerInfoComponent,
+    MatCardContent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInput,
+    MatButton,
+    TitleCasePipe,
+    CurrencyPipe,
+    DatePipe
+  ],
+  standalone: true
 })
 export class DetailComponent implements OnInit {
   private route = inject(ActivatedRoute);

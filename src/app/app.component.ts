@@ -12,7 +12,8 @@ import { AsyncPipe } from '@angular/common';
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    imports: [MatToolbar, FlexModule, RouterLink, RouterOutlet, AsyncPipe]
+    imports: [MatToolbar, FlexModule, RouterLink, RouterOutlet, AsyncPipe],
+    standalone: true
 })
 export class AppComponent implements OnInit {
   private authService = inject(AuthService);
