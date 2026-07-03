@@ -1,11 +1,12 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges, inject } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, inject } from '@angular/core';
 import { User } from 'src/app/interfaces/user.interface';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
     selector: 'app-owner-info',
     templateUrl: './owner-info.component.html',
-    styleUrls: ['./owner-info.component.scss']
+    styleUrls: ['./owner-info.component.scss'],
+    standalone: true
 })
 export class OwnerInfoComponent implements OnChanges {
   private userService = inject(UserService);

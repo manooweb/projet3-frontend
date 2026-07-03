@@ -11,10 +11,25 @@ import { OwnerInfoComponent } from '../../../../shared/components/owner-info/own
 import { AsyncPipe } from '@angular/common';
 
 @Component({
-    selector: 'app-list',
-    templateUrl: './list.component.html',
-    styleUrls: ['./list.component.scss'],
-    imports: [MatCard, MatCardHeader, FlexModule, MatCardTitle, MatButton, RouterLink, MatIcon, MatCardSubtitle, OwnerInfoComponent, MatCardImage, MatCardContent, MatCardActions, AsyncPipe]
+  selector: 'app-list',
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.scss'],
+  imports: [
+    MatCard,
+    MatCardHeader,
+    FlexModule,
+    MatCardTitle,
+    MatButton,
+    RouterLink,
+    MatIcon,
+    MatCardSubtitle,
+    OwnerInfoComponent,
+    MatCardImage,
+    MatCardContent,
+    MatCardActions,
+    AsyncPipe
+  ],
+  standalone: true
 })
 export class ListComponent {
   private sessionService = inject(SessionService);

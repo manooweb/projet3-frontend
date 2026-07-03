@@ -16,7 +16,19 @@ import { MatButton } from '@angular/material/button';
     selector: 'app-register',
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.scss'],
-    imports: [FlexModule, MatCard, MatCardHeader, MatCardTitle, FormsModule, ReactiveFormsModule, MatCardContent, MatFormField, MatInput, MatButton]
+    imports: [
+      FlexModule,
+      MatCard,
+      MatCardHeader,
+      MatCardTitle,
+      FormsModule,
+      ReactiveFormsModule,
+      MatCardContent,
+      MatFormField,
+      MatInput,
+      MatButton
+    ],
+    standalone: true
 })
 export class RegisterComponent {
   private authService = inject(AuthService);

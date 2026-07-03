@@ -15,10 +15,27 @@ import { MatInput } from '@angular/material/input';
 import { MaterialFileInputModule } from 'ngx-custom-material-file-input';
 
 @Component({
-    selector: 'app-form',
-    templateUrl: './form.component.html',
-    styleUrls: ['./form.component.scss'],
-    imports: [MatCard, MatCardTitle, FlexModule, MatIconButton, RouterLink, MatIcon, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, MatInput, MatSuffix, MaterialFileInputModule, MatButton]
+  selector: 'app-form',
+  templateUrl: './form.component.html',
+  styleUrls: ['./form.component.scss'],
+  imports: [
+    MatCard,
+    MatCardTitle,
+    FlexModule,
+    MatIconButton,
+    RouterLink,
+    MatIcon,
+    MatCardContent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    MatSuffix,
+    MaterialFileInputModule,
+    MatButton
+  ],
+  standalone: true
 })
 export class FormComponent implements OnInit {
   private route = inject(ActivatedRoute);
@@ -71,7 +88,7 @@ export class FormComponent implements OnInit {
   private initForm(rental?: Rental): void {
     console.log(rental);
     console.log(this.sessionService.user!.id);
-    if( (rental !== undefined) && (rental?.owner_id !== this.sessionService.user!.id)) {
+    if ((rental !== undefined) && (rental?.owner_id !== this.sessionService.user!.id)) {
       this.router.navigate(['/rentals']);
     }
     this.rentalForm = this.fb.group({

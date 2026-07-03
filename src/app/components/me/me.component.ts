@@ -11,7 +11,8 @@ import { DatePipe } from '@angular/common';
     selector: 'app-me',
     templateUrl: './me.component.html',
     styleUrls: ['./me.component.scss'],
-    imports: [MatCard, MatCardTitle, FlexModule, MatIconButton, MatIcon, MatCardContent, DatePipe]
+    imports: [MatCard, MatCardTitle, FlexModule, MatIconButton, MatIcon, MatCardContent, DatePipe],
+    standalone: true
 })
 export class MeComponent implements OnInit {
   private authService = inject(AuthService);
