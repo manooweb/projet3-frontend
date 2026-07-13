@@ -6,6 +6,13 @@
     }
 
     .item {
+        min-width: 0;
+
+        img[mat-card-image] {
+            width: 100%;
+            height: auto;
+        }
+
         mat-card-actions {
             gap: 8px;
         }
