@@ -2,43 +2,59 @@
 
 This project is based on Angular 20, and requires node 22.
 
+## Branch Purpose
+
+This branch is the frontend version connected to the real Chatop Spring Boot API.
+
+Backend repository:
+
+- [manooweb/projet3-backend](https://github.com/manooweb/projet3-backend)
+
+The original Mockoon-based starter version should be kept on a separate backup branch if it is still needed for comparison or rollback. This connected version does not require Mockoon.
+
 ## Start the project
 
-Git clone:
+Required local services:
 
-> git clone https://github.com/OpenClassrooms-Student-Center/P3-Full-Stack-portail-locataire
-
-Go inside folder:
-
-> cd Mod-lisez-et-impl-mentez-le-back-end-en-utilisant-du-code-Java-maintenable
+- Chatop backend running on `http://localhost:9001`
+- MySQL configured for the backend
+- Mailpit or another SMTP server if you want to verify message emails
 
 Install dependencies:
 
-> npm install
+```bash
+npm install
+```
 
-Launch Front-end:
+Launch the frontend:
 
-> npm run start;
+```bash
+npm run start
+```
 
+The Angular dev server starts on:
+
+```text
+http://localhost:4200
+```
+
+The development proxy forwards API calls to the backend:
+
+```text
+/api/** -> http://localhost:9001
+```
+
+Demo credentials after importing the backend `chatop.sql` script:
+
+```text
+email: demo@chatop.com
+password: password
+```
 
 ## Ressources
 
-### Mockoon env
-
-Download Mockoon here: https://mockoon.com/download/
-
-After installing you could load the environement
-
-> ressources/mockoon/rental-oc.json
-
-directly inside Mockoon 
-
-> File > Open environmement
-
-For launching the Mockoon server click on play bouton
-
-Mockoon documentation: https://mockoon.com/docs/latest/about/
-
 ### MySQL
 
-SQL script for creating the schema is available `ressources/sql/script.sql`
+The current API demonstration uses the `chatop.sql` script from [manooweb/projet3-backend](https://github.com/manooweb/projet3-backend).
+
+The legacy frontend resource `ressources/sql/script.sql` is kept only as original project material.
