@@ -69,8 +69,9 @@ export class FormComponent implements OnInit {
     formData.append('name', this.rentalForm!.get('name')?.value);
     formData.append('surface', this.rentalForm!.get('surface')?.value);
     formData.append('price', this.rentalForm!.get('price')?.value);
-    if (!this.onUpdate) {
-      formData.append('picture', this.rentalForm!.get('picture')?.value._files[0]);
+    const picture = this.rentalForm!.get('picture')?.value;
+    if (picture?._files?.length) {
+      formData.append('picture', picture._files[0]);
     }
     formData.append('description', this.rentalForm!.get('description')?.value);
 
@@ -95,11 +96,9 @@ export class FormComponent implements OnInit {
       name: [rental ? rental.name : '', [Validators.required]],
       surface: [rental ? rental.surface : '', [Validators.required]],
       price: [rental ? rental.price : '', [Validators.required]],
+      picture: ['', this.onUpdate ? [] : [Validators.required]],
       description: [rental ? rental.description : '', [Validators.required]],
     });
-    if (!this.onUpdate) {
-      this.rentalForm.addControl('picture', this.fb.control('', [Validators.required]));
-    }
   }
 
   private exitPage(rentalResponse: RentalResponse): void {
