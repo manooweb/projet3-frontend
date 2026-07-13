@@ -4,13 +4,13 @@ This project is based on Angular 20, and requires node 22.
 
 ## Branch Purpose
 
-This branch is the frontend version connected to the real Chatop Spring Boot API.
+The `main` branch is the frontend version connected to the real Chatop Spring Boot API. It does not require Mockoon.
 
 Backend repository:
 
 - [manooweb/projet3-backend](https://github.com/manooweb/projet3-backend)
 
-The original Mockoon-based starter version should be kept on a separate backup branch if it is still needed for comparison or rollback. This connected version does not require Mockoon.
+For usage with Mockoon, use the `original-mockoon-integration` branch.
 
 ## Start the project
 
