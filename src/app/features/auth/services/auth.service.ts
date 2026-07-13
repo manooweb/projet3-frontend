@@ -15,6 +15,10 @@ export class AuthService {
 
   private pathService = 'api/auth';
 
+  public csrf(): Observable<void> {
+    return this.httpClient.get<void>(`${this.pathService}/csrf`);
+  }
+
   public register(registerRequest: RegisterRequest): Observable<AuthSuccess> {
     return this.httpClient.post<AuthSuccess>(`${this.pathService}/register`, registerRequest);
   }
@@ -25,5 +29,9 @@ export class AuthService {
 
   public me(): Observable<User> {
     return this.httpClient.get<User>(`${this.pathService}/me`);
+  }
+
+  public logout(): Observable<AuthSuccess> {
+    return this.httpClient.post<AuthSuccess>(`${this.pathService}/logout`, {});
   }
 }

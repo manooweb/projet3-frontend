@@ -1,10 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { switchMap } from 'rxjs';
 import { SessionService } from 'src/app/services/session.service';
 import { AuthService } from '../../services/auth.service';
 import { RegisterRequest } from '../../interfaces/registerRequest.interface';
-import { AuthSuccess } from '../../interfaces/authSuccess.interface';
 import { User } from 'src/app/interfaces/user.interface';
 import { FlexModule } from 'ng-flex-layout/flex';
 import { MatCard, MatCardHeader, MatCardTitle, MatCardContent } from '@angular/material/card';
@@ -47,13 +47,13 @@ export class RegisterComponent {
 
   public submit(): void {
     const registerRequest = this.form.value as RegisterRequest;
-    this.authService.register(registerRequest).subscribe(
-      (response: AuthSuccess) => {
-        localStorage.setItem('token', response.token);
-        this.authService.me().subscribe((user: User) => {
-          this.sessionService.logIn(user);
-          this.router.navigate(['/rentals'])
-        });
+    this.authService.csrf().pipe(
+      switchMap(() => this.authService.register(registerRequest)),
+      switchMap(() => this.authService.me())
+    ).subscribe(
+      (user: User) => {
+        this.sessionService.logIn(user);
+        this.router.navigate(['/rentals'])
       },
       error => this.onError = true
     );

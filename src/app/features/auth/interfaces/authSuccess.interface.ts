@@ -1,3 +1,3 @@
 export interface AuthSuccess {
-    token: string;
+    message: string;
 }

@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { switchMap } from 'rxjs';
 import { User } from 'src/app/interfaces/user.interface';
 import { SessionService } from 'src/app/services/session.service';
-import { AuthSuccess } from '../../interfaces/authSuccess.interface';
 import { LoginRequest } from '../../interfaces/loginRequest.interface';
 import { AuthService } from '../../services/auth.service';
 import { FlexModule } from 'ng-flex-layout/flex';
@@ -50,13 +50,12 @@ export class LoginComponent  {
 
   public submit(): void {
     const loginRequest = this.form.value as LoginRequest;
-    this.authService.login(loginRequest).subscribe(
-      (response: AuthSuccess) => {
-        localStorage.setItem('token', response.token);
-        this.authService.me().subscribe((user: User) => {
-          this.sessionService.logIn(user);
-          this.router.navigate(['/rentals'])
-        });
+    this.authService.csrf().pipe(
+      switchMap(() => this.authService.login(loginRequest)),
+      switchMap(() => this.authService.me())
+    ).subscribe(
+      (user: User) => {
+        this.sessionService.logIn(user);
         this.router.navigate(['/rentals'])
       },
       error => this.onError = true

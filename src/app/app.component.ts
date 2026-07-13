@@ -30,8 +30,10 @@ export class AppComponent implements OnInit {
   }
 
   public logout(): void {
-    this.sessionService.logOut();
-    this.router.navigate([''])
+    this.authService.logout().subscribe({
+      next: () => this.clearSession(),
+      error: () => this.clearSession()
+    });
   }
 
   public autoLog(): void {
@@ -43,5 +45,10 @@ export class AppComponent implements OnInit {
         this.sessionService.logOut();
       }
     )
+  }
+
+  private clearSession(): void {
+    this.sessionService.logOut();
+    this.router.navigate([''])
   }
 }

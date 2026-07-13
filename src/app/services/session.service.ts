@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { AuthService } from '../features/auth/services/auth.service';
 import { User } from '../interfaces/user.interface';
 
 @Injectable({
@@ -24,7 +23,6 @@ export class SessionService {
   }
 
   public logOut(): void {
-    localStorage.removeItem('token');
     this.user = undefined;
     this.isLogged = false;
     this.next();
