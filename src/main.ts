@@ -1,7 +1,7 @@
 import { enableProdMode, importProvidersFrom } from '@angular/core';
 
 import { environment } from './environments/environment';
-import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi, withXsrfConfiguration } from '@angular/common/http';
+import { provideHttpClient, withXsrfConfiguration } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -10,7 +10,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { AppComponent } from './app/app.component';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AppRoutingModule } from './app/app-routing.module';
-import { MockoonAuthInterceptor } from './app/interceptors/mockoon-auth.interceptor';
 
 const materialModule = [
   MatButtonModule,
@@ -28,11 +27,10 @@ if (environment.production) {
 bootstrapApplication(AppComponent, {
     providers: [
         importProvidersFrom(AppRoutingModule, ...materialModule),
-        { provide: HTTP_INTERCEPTORS, useClass: MockoonAuthInterceptor, multi: true },
         provideHttpClient(withXsrfConfiguration({
           cookieName: 'XSRF-TOKEN',
           headerName: 'X-XSRF-TOKEN',
-        }), withInterceptorsFromDi()),
+        })),
         provideAnimations()
     ]
 })
