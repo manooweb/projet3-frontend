@@ -23,6 +23,18 @@
         "changeOrigin": true,
         "logLevel": "debug"
     },
+    "/api/messages": {
+        "target": "http://localhost:9001",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    },
+    "/api/messages/**": {
+        "target": "http://localhost:9001",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    },
     "/api/uploads/**": {
         "target": "http://localhost:9001",
         "secure": false,

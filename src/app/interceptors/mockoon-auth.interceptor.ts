@@ -22,6 +22,7 @@ export class MockoonAuthInterceptor implements HttpInterceptor {
       && !normalizedUrl.startsWith('/api/auth/')
       && !normalizedUrl.startsWith('/api/rentals')
       && !normalizedUrl.startsWith('/api/user/')
+      && !normalizedUrl.startsWith('/api/messages')
       && !normalizedUrl.startsWith('/api/uploads/');
   }
 }
