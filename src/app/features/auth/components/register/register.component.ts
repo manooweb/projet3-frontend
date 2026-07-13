@@ -46,6 +46,11 @@ export class RegisterComponent {
   });
 
   public submit(): void {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+
     const registerRequest = this.form.value as RegisterRequest;
     this.authService.csrf().pipe(
       switchMap(() => this.authService.register(registerRequest)),

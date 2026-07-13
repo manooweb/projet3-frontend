@@ -49,6 +49,11 @@ export class LoginComponent  {
   });
 
   public submit(): void {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+
     const loginRequest = this.form.value as LoginRequest;
     this.authService.csrf().pipe(
       switchMap(() => this.authService.login(loginRequest)),

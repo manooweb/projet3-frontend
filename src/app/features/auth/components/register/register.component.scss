@@ -5,4 +5,15 @@
         max-width: 600px;
         width: 100%;
     }
+
+    .register-form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-actions {
+        display: flex;
+        justify-content: flex-end;
+        padding: 0 16px 16px;
+    }
 }

@@ -11,13 +11,15 @@
         <mat-form-field fxFlex>
           <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password"
             formControlName="password">
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
               [attr.aria-pressed]="hide">
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
           </mat-form-field>
         </mat-card-content>
-        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Submit</button>
+        <div class="form-actions">
+          <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Submit</button>
+        </div>
         @if (onError) {
           <p class="error">An error occurred</p>
         }
