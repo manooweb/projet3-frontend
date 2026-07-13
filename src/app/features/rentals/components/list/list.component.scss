@@ -4,4 +4,10 @@
     .items {
         gap: 2rem;
     }
+
+    .item {
+        mat-card-actions {
+            gap: 8px;
+        }
+    }
 }
