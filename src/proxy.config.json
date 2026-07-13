@@ -5,6 +5,30 @@
         "changeOrigin": true,
         "logLevel": "debug"
     },
+    "/api/rentals": {
+        "target": "http://localhost:9001",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    },
+    "/api/rentals/**": {
+        "target": "http://localhost:9001",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    },
+    "/api/user/**": {
+        "target": "http://localhost:9001",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    },
+    "/api/uploads/**": {
+        "target": "http://localhost:9001",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    },
     "/api/**": {
         "target": "http://localhost:3001",
         "secure": false,

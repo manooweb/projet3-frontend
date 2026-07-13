@@ -18,6 +18,10 @@ export class MockoonAuthInterceptor implements HttpInterceptor {
   private isMockoonRequest(url: string): boolean {
     const normalizedUrl = url.startsWith('/') ? url : `/${url}`;
 
-    return normalizedUrl.startsWith('/api/') && !normalizedUrl.startsWith('/api/auth/');
+    return normalizedUrl.startsWith('/api/')
+      && !normalizedUrl.startsWith('/api/auth/')
+      && !normalizedUrl.startsWith('/api/rentals')
+      && !normalizedUrl.startsWith('/api/user/')
+      && !normalizedUrl.startsWith('/api/uploads/');
   }
 }
